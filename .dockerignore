@@ -1,0 +1,15 @@
+node_modules
+build
+.dockerignore
+Dockerfile
+.env
+.local
+.git
+README.md
+dist
+
+# Build outputs
+*.log
+*.tmp
+.vscode
+coverage

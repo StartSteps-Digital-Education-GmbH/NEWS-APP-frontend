@@ -4,3 +4,12 @@ build
 Dockerfile
 .env
 .local
+.git
+README.md
+dist
+
+# Build outputs
+*.log
+*.tmp
+.vscode
+coverage

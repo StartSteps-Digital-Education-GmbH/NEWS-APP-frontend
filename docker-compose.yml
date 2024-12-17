@@ -8,7 +8,7 @@ services:
     ports:
       - "3000:80" # Map React app to port 3000 on the host
     environment:
-      REACT_APP_API_URL: "http://backend-service:5000"
+      REACT_APP_API_URL
     depends_on:
       - backend-service
 
@@ -19,3 +19,8 @@ services:
       - "5000:5000"
     env_file:
       - .env
+    healthcheck:
+      test: curl -f http://localhost:5000 || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 5

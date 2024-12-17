@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  react-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80" # Map React app to port 3000 on the host
+    environment:
+      REACT_APP_API_URL: "http://backend-service:5000"
+    depends_on:
+      - backend-service
+
+  backend-service:
+    image: my-backend-image
+    container_name: backend-service
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env

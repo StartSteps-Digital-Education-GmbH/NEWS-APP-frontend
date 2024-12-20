@@ -1,0 +1,21 @@
+services:
+  react-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    environment:
+      REACT_APP_API_URL: "http://localhost:5002/"
+    networks:
+      - backend-frontend-network 
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://news_app:5002/api/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+networks:
+  backend-frontend-network:
+    driver: bridge
+    external: true
